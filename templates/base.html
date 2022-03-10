@@ -24,6 +24,7 @@
 
             {% if user.is_authenticated %}
                 <li><a href="{% url 'todo_app:logout' %}">خروج</a></li>
+                <li><a href="{% url 'todo_app:post' %}">افزودن</a></li>
             {% else %}
                 <li><a href="{% url 'todo_app:login' %}">ورود</a></li>
                 <li><a href="{% url 'todo_app:signup' %}">ثبت نام</a></li>
