@@ -8,6 +8,8 @@
             <p>{{ todo.important }}</p>
             <p>{{ todo.created }}</p>
             <p>{{ todo.completed }}</p>
+            <p><a href="{% url 'todo_app:edit' todo.id %}">ویرایش</a></p>
+            <p><a href="{% url 'todo_app:delete' todo.id %}">حذف</a></p>
         </div>
 
     </div>

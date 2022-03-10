@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import UserCreateForm, ToDoForm
 from .models import ToDo
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -17,7 +17,7 @@ class ToDoCreate(LoginRequiredMixin, CreateView):
     # redirect_field_name = 'test.html'
 
     form_class = ToDoForm
-    success_url = reverse_lazy('todo_app:home')
+    # success_url = reverse_lazy('todo_app:detail')
     template_name = 'todo_form.html'
 
     def get_initial(self):
@@ -41,6 +41,20 @@ class ToDoDetailView(DetailView):
     context_object_name = 'todo'
 
 
+class ToDoUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+
+    form_class = ToDoForm
+    template_name = 'todo_form.html'
+    model = ToDo
+
+
+class ToDoDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+
+    model = ToDo
+    template_name = 'confirm_delete.html'
+    success_url = reverse_lazy('todo_app:list')
 
 
 
