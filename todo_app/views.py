@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import UserCreateForm, ToDoForm
-from .models import Users
-from django.views.generic import CreateView
+from .models import ToDo
+from django.views.generic import CreateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -26,13 +26,19 @@ class ToDoCreate(LoginRequiredMixin, CreateView):
         return initial
 
 
+class ToDoListView(ListView):
+    model = ToDo
+    template_name = 'todolist.html'
+    context_object_name = 'todo_list'
+
+    def get_queryset(self):
+        return self.model.objects.filter(user__username=self.request.user)
 
 
-
-
-
-
-
+class ToDoDetailView(DetailView):
+    model = ToDo
+    template_name = 'detail.html'
+    context_object_name = 'todo'
 
 
 

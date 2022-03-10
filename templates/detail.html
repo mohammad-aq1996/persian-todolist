@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>{{ todo.title }}</h2>
+            <p>{{ todo.content }}</p>
+            <p>{{ todo.important }}</p>
+            <p>{{ todo.created }}</p>
+            <p>{{ todo.completed }}</p>
+        </div>
+
+    </div>
+
+{% endblock %}
