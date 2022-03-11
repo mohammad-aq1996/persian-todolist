@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import UserCreateForm, ToDoForm
 from .models import ToDo
@@ -14,7 +13,7 @@ class SignUpView(CreateView):
 
 class ToDoCreate(LoginRequiredMixin, CreateView):
     login_url = '/login/'
-    # redirect_field_name = 'test.html'
+    redirect_field_name = 'next'
 
     form_class = ToDoForm
     # success_url = reverse_lazy('todo_app:detail')
@@ -32,10 +31,20 @@ class ToDoListView(ListView):
     context_object_name = 'todo_list'
 
     def get_queryset(self):
-        return self.model.objects.filter(user__username=self.request.user)
+        return self.model.objects.filter(user__username=self.request.user, completed__isnull=True)
 
 
-class ToDoDetailView(DetailView):
+class ToDoCompletedList(ToDoListView):
+    template_name = 'completed_list.html'
+
+    def get_queryset(self):
+        return self.model.objects.filter(user__username=self.request.user, completed__isnull=False)
+
+
+class ToDoDetailView(LoginRequiredMixin, DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'next'
+
     model = ToDo
     template_name = 'detail.html'
     context_object_name = 'todo'
@@ -43,6 +52,7 @@ class ToDoDetailView(DetailView):
 
 class ToDoUpdateView(LoginRequiredMixin, UpdateView):
     login_url = '/login/'
+    redirect_field_name = 'next'
 
     form_class = ToDoForm
     template_name = 'todo_form.html'
@@ -51,6 +61,7 @@ class ToDoUpdateView(LoginRequiredMixin, UpdateView):
 
 class ToDoDeleteView(LoginRequiredMixin, DeleteView):
     login_url = '/login/'
+    redirect_field_name = 'next'
 
     model = ToDo
     template_name = 'confirm_delete.html'

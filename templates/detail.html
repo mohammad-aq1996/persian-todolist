@@ -17,7 +17,8 @@
                   </tr>
                 <tr>
                     <th scope="row">اهمیت</th>
-                    <td><em style="color: red">{% if todo.important %} این یک کار مهم میباشد. {% endif %}</em></td>
+                    <td>{% if todo.important %} <em style="color: red">این یک کار مهم میباشد. </em>
+                        {% else %}<em style="color: blue"> این یک کار مهم نمیباشد </em>{% endif %}</td>
                   </tr>
                 <tr>
                     <th scope="row">زمان ایجاد یادآوری</th>

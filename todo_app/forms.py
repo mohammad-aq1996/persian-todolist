@@ -18,13 +18,14 @@ class ToDoForm(forms.ModelForm):
 
     class Meta:
         model = ToDo
-        fields = ['title', 'content', 'important']
-        # labels = {
-        #     'title': 'عنوان',
-        #     'content': 'متن',
-        #     'important': 'اهمیت'
-        # }
+        fields = ['title', 'content', 'important', 'user', 'completed']
+        labels = {
+            'title': 'عنوان',
+            'content': 'متن',
+            'important': 'اهمیت'
+        }
+        widgets = {'user': forms.HiddenInput()}
 
-    # def __init__(self, *args, **kwargs):
-    #     super(ToDoForm, self).__init__(*args, **kwargs)
-    #     self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget, required=False)
+    def __init__(self, *args, **kwargs):
+        super(ToDoForm, self).__init__(*args, **kwargs)
+        self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget, required=False)
