@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load jalali_tags %}
 {% load bootstrap3 %}
+
 {% block content %}
     <div class="container">
         <div class="jumbotron">
@@ -7,9 +10,9 @@
                 {% if todo.important %}
                 <h2 style="background-color: crimson"><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title }} </a></h2>
                 {% else %}
-                <h2><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title }} </a></h2>
-
+                <h2><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title}} </a></h2>
                 {% endif %}
+                <p>{{ todo.get_jalali_date|date:'Y/m/d'}}</p>
             {% endfor %}
         </div>
 

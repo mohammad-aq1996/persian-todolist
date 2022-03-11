@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import ToDo
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+from jalali_date.fields import JalaliDateField, SplitJalaliDateTimeField
+from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
 
 
 class UserCreateForm(UserCreationForm):
@@ -12,13 +14,17 @@ class UserCreateForm(UserCreationForm):
 
 
 class ToDoForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorWidget(), label='متن')
 
     class Meta:
         model = ToDo
-        fields = ['title', 'content', 'important', 'user']
+        fields = ['title', 'content', 'important', 'completed']
         labels = {
             'title': 'عنوان',
             'content': 'متن',
             'important': 'اهمیت'
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ToDoForm, self).__init__(*args, **kwargs)
+        self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget)

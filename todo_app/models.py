@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, PermissionsMixin
 from django.utils import timezone
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
-
+from jalali_date import date2jalali, datetime2jalali
 
 class Users(User, PermissionsMixin):
 
@@ -24,3 +24,6 @@ class ToDo(models.Model):
 
     def get_absolute_url(self):
         return reverse('todo_app:detail', kwargs={'pk': self.id})
+
+    def get_jalali_date(self):
+        return datetime2jalali(self.created)
