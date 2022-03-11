@@ -11,6 +11,15 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ['username', 'password1', 'password2', 'email']
+        labels = {
+            'username': 'نام کاربری',
+            'email': 'ایمیل'
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].label = 'رمز عبور'
+        self.fields['password2'].label = 'تایید رمز عبور'
 
 
 class ToDoForm(forms.ModelForm):
