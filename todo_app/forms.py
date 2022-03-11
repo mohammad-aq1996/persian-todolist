@@ -14,17 +14,17 @@ class UserCreateForm(UserCreationForm):
 
 
 class ToDoForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget(), label='متن')
+    content = forms.CharField(widget=CKEditorWidget())
 
     class Meta:
         model = ToDo
-        fields = ['title', 'content', 'important', 'completed']
-        labels = {
-            'title': 'عنوان',
-            'content': 'متن',
-            'important': 'اهمیت'
-        }
+        fields = ['title', 'content', 'important']
+        # labels = {
+        #     'title': 'عنوان',
+        #     'content': 'متن',
+        #     'important': 'اهمیت'
+        # }
 
-    def __init__(self, *args, **kwargs):
-        super(ToDoForm, self).__init__(*args, **kwargs)
-        self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget, required=False)
+    # def __init__(self, *args, **kwargs):
+    #     super(ToDoForm, self).__init__(*args, **kwargs)
+    #     self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget, required=False)

@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 from jalali_date import date2jalali, datetime2jalali
 
+
 class Users(User, PermissionsMixin):
 
     def __str__(self):
