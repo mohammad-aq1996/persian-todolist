@@ -6,14 +6,25 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
+        {% if todo_list %}
+            <h1 align="center"><b>لیست کار های شما</b></h1>
+            <h2 align="center">تعداد کارها: {{ todo_list.count }}</h2>
             {% for todo in todo_list %}
-                {% if todo.important %}
-                <h2 style="background-color: crimson"><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title }} </a></h2>
-                {% else %}
-                <h2><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title}} </a></h2>
-                {% endif %}
-                <p>{{ todo.get_jalali_date|date:'Y/m/d'}}</p>
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        <a href="{% url 'todo_app:detail' todo.pk %}"
+                           class="btn btn-primary btn-lg btn-block {% if todo.important %}btn-danger{% endif %}"
+                           role="button" aria-pressed="true">
+                                <h2>عنوان کار: {{ todo.title }}</h2>
+                                <p>تاریخ ثبت: {{ todo.get_jalali_date|date:'Y/m/d' }}</p>
+                        </a>
+                    </li>
+
+                </ul>
+
             {% endfor %}
+        {% endif %}
         </div>
 
     </div>
