@@ -5,6 +5,7 @@
         <div class="jumbotron">
             <form method="post">
                 {% csrf_token %}
+                {{ form.media }}
                 {% bootstrap_form form %}
                 <input class="btn btn-primary" type="submit" value="افزودن">
             </form>

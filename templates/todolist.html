@@ -4,7 +4,12 @@
     <div class="container">
         <div class="jumbotron">
             {% for todo in todo_list %}
+                {% if todo.important %}
+                <h2 style="background-color: crimson"><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title }} </a></h2>
+                {% else %}
                 <h2><a href="{% url 'todo_app:detail' todo.id %}"> {{ todo.title }} </a></h2>
+
+                {% endif %}
             {% endfor %}
         </div>
 

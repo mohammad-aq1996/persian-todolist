@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User, PermissionsMixin
 from django.utils import timezone
 from django.shortcuts import reverse
+from ckeditor.fields import RichTextField
 
 
 class Users(User, PermissionsMixin):
@@ -12,7 +13,7 @@ class Users(User, PermissionsMixin):
 
 class ToDo(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextField()
     important = models.BooleanField(default=False)
     created = models.DateTimeField(default=timezone.now)
     completed = models.DateTimeField(blank=True, null=True)
