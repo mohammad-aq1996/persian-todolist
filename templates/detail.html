@@ -3,13 +3,36 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
-            <h2>{{ todo.title }}</h2>
-            <p>{{ todo.content }}</p>
-            <p>{{ todo.important }}</p>
-            <p>{{ todo.created }}</p>
-            <p>{{ todo.completed }}</p>
-            <p><a href="{% url 'todo_app:edit' todo.id %}">ویرایش</a></p>
-            <p><a href="{% url 'todo_app:delete' todo.id %}">حذف</a></p>
+        <div class="text-center"><h2><b>جزییات یادآوری: {{ todo.title }}</b> </h2></div>
+
+            <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">عنوان</th>
+                    <td>{{ todo.title }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">متن یادآوری</th>
+                    <td>{{ todo.content|safe }}</td>
+                  </tr>
+                <tr>
+                    <th scope="row">اهمیت</th>
+                    <td><em style="color: red">{% if todo.important %} این یک کار مهم میباشد. {% endif %}</em></td>
+                  </tr>
+                <tr>
+                    <th scope="row">زمان ایجاد یادآوری</th>
+                    <td>{{ todo.get_jalali_date|date:'Y/m/d--H:i' }}</td>
+                  </tr>
+                <tr>
+                    <th scope="row">زمان انجام کار</th>
+                    <td>{% if todo.completed %} {{ todo.completed }} {% else %} انجام نشده است. {% endif %}</td>
+                  </tr>
+                </tbody>
+              </table>
+                <div class="text-center">
+                    <a class="btn btn-primary btn-lg " href="{% url 'todo_app:edit' todo.id %}">ویرایش</a>
+                    <a class="btn btn-primary btn-lg active btn-danger center-block" href="{% url 'todo_app:delete' todo.id %}">حذف</a>
+                </div>
         </div>
 
     </div>

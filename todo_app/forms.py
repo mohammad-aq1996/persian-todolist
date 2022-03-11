@@ -27,4 +27,4 @@ class ToDoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ToDoForm, self).__init__(*args, **kwargs)
-        self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget)
+        self.fields['completed'] = JalaliDateField(label='تاریخ انجام ', widget=AdminJalaliDateWidget, required=False)
