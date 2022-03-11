@@ -1,6 +1,7 @@
 /*
 RTL By http://azinweb.com
 */
+
 article,
 aside,
 details,
@@ -15,7 +16,6 @@ section,
 summary {
   display: block;
 }
-
 audio,
 canvas,
 video {

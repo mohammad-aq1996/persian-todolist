@@ -29,6 +29,7 @@ class ToDoListView(ListView):
     model = ToDo
     template_name = 'todolist.html'
     context_object_name = 'todo_list'
+    # paginate_by = 4
 
     def get_queryset(self):
         return self.model.objects.filter(user__username=self.request.user, completed__isnull=True)
