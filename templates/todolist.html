@@ -7,7 +7,7 @@
     <div class="container">
         <div class="jumbotron">
         <h1 align="center"><b>لیست کار های شما</b></h1>
-            <h2 align="center"><b>تعداد کارهای انجام نشده: {{ todo_list.count }}</b></h2>
+            <h2 align="center"><b>تعداد کارهای انجام نشده: {{ count }}</b></h2>
         {% if todo_list %}
 
             {% for todo in todo_list %}
@@ -26,6 +26,20 @@
 
             {% endfor %}
         {% endif %}
+
+            <div class="container text-center">
+                <ul class="pagination">
+                    <li><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}">«</a></li>
+
+                {% for page in page_obj.paginator.page_range %}
+                    <li class="{% if page_obj.number == page %} active {% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+
+                    <li><a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}">»</a></li>
+
+                </ul>
+            </div>
+
         </div>
 
     </div>

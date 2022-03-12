@@ -3,6 +3,11 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
+            <div>
+                {% if form.errors %}
+                <p style="color:red">نام کاربری و یا رمز عبور صحیح نمیباشد</p>
+                {% endif %}
+            </div>
             <form method="post">
                 {% csrf_token %}
 {#                {% bootstrap_form form %}#}

@@ -29,14 +29,19 @@ class ToDoListView(ListView):
     model = ToDo
     template_name = 'todolist.html'
     context_object_name = 'todo_list'
-    # paginate_by = 4
+    paginate_by = 2
 
     def get_queryset(self):
         return self.model.objects.filter(user__username=self.request.user, completed__isnull=True)
 
+    def get_context_data(self, **kwargs):
+        context = super(ToDoListView, self).get_context_data(**kwargs)
+        context['count'] = self.get_queryset().count()
+        return context
+
 
 class ToDoCompletedList(ToDoListView):
-    template_name = 'completed_list.html'
+    # template_name = 'completed_list.html'
 
     def get_queryset(self):
         return self.model.objects.filter(user__username=self.request.user, completed__isnull=False)
