@@ -26,12 +26,6 @@
                     <li><a href="{% url 'todo_app:list' %}">لیست کارهای انجام نشده</a></li>
                     <li><a href="{% url 'todo_app:competed_list' %}">لیست کارهای انجام شده</a></li>
                     <li><a href="{% url 'todo_app:post' %}">افزودن</a></li>
-                    <form class="navbar-form navbar-left" method="get">
-                      <div class="form-group">
-                        <input type="text" name="search" class="form-control" placeholder="جستجو">
-                      </div>
-                      <button type="submit" class="btn btn-default">جستجو</button>
-                    </form>
                 {% endif %}
 
             </ul>

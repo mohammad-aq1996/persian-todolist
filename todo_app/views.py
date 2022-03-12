@@ -3,7 +3,6 @@ from .forms import UserCreateForm, ToDoForm
 from .models import ToDo
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
 
 
 class SignUpView(CreateView):
@@ -45,6 +44,12 @@ class ToDoCompletedList(ToDoListView):
 
     def get_queryset(self):
         return self.model.objects.filter(user__username=self.request.user, completed__isnull=False).order_by('-completed')
+
+    def get_context_data(self, **kwargs):
+        context = super(ToDoListView, self).get_context_data(**kwargs)
+        context['count'] = self.get_queryset().count()
+        context['completed'] = True
+        return context
 
 
 class ToDoDetailView(LoginRequiredMixin, DetailView):
