@@ -8,6 +8,11 @@ from jalali_date.widgets import AdminJalaliDateWidget, AdminSplitJalaliDateTime
 
 
 class UserCreateForm(UserCreationForm):
+    """
+        Using django built-in user create form for signup users
+        form fields: 'username', 'password1', 'password2', 'email'
+        password2 is confirms field
+    """
     class Meta:
         model = get_user_model()
         fields = ['username', 'password1', 'password2', 'email']
@@ -23,6 +28,11 @@ class UserCreateForm(UserCreationForm):
 
 
 class ToDoForm(forms.ModelForm):
+    """
+        Form for creating new to-do list
+        form fields: 'title', 'content', 'important', and 'completed'
+
+    """
     content = forms.CharField(widget=CKEditorWidget(), label='متن کار')
 
     class Meta:
