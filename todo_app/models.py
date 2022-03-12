@@ -1,15 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User, PermissionsMixin
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 from jalali_date import date2jalali, datetime2jalali
-
-
-class Users(User, PermissionsMixin):
-
-    def __str__(self):
-        return self.username
 
 
 class ToDo(models.Model):
