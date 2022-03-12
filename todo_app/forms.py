@@ -23,7 +23,7 @@ class UserCreateForm(UserCreationForm):
 
 
 class ToDoForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorWidget(), label='متن کار')
 
     class Meta:
         model = ToDo

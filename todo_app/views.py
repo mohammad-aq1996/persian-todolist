@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class SignUpView(CreateView):
     form_class = UserCreateForm
-    success_url = reverse_lazy('todo_app:home')
+    success_url = reverse_lazy('todo_app:login')
     template_name = 'signup.html'
 
 
@@ -32,7 +32,7 @@ class ToDoListView(ListView):
     paginate_by = 2
 
     def get_queryset(self):
-        return self.model.objects.filter(user__username=self.request.user, completed__isnull=True)
+        return self.model.objects.filter(user__username=self.request.user, completed__isnull=True).order_by('-created')
 
     def get_context_data(self, **kwargs):
         context = super(ToDoListView, self).get_context_data(**kwargs)
@@ -41,10 +41,9 @@ class ToDoListView(ListView):
 
 
 class ToDoCompletedList(ToDoListView):
-    # template_name = 'completed_list.html'
 
     def get_queryset(self):
-        return self.model.objects.filter(user__username=self.request.user, completed__isnull=False)
+        return self.model.objects.filter(user__username=self.request.user, completed__isnull=False).order_by('-completed')
 
 
 class ToDoDetailView(LoginRequiredMixin, DetailView):

@@ -3,10 +3,15 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
+            <div class="text-center">
+                <h1 style="font-family: 'B Nazanin'">ثبت نام در سایت</h1>
+            </div>
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <input class="btn btn-primary" type="submit" value="ثبت نام">
+                <div class="text-center ">
+                <input class="btn btn-primary btn-lg" type="submit" value="ثبت نام">
+                    </div>
             </form>
         </div>
 

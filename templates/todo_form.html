@@ -3,6 +3,9 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
+            <div class="text-center">
+                <h1 style="font-family: 'B Nazanin'">افزودن یک کار جدید</h1>
+            </div>
             <form method="post">
                 {% csrf_token %}
                 {{ form.media }}
