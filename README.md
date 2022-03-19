@@ -7,10 +7,14 @@
 <p dir="rtl"> وبلاگ در هاست رایگان سایت pythonanywhere پیاده سازی شده است. برای مشاده آنلاین وبلاگ میتوانید به لینک مقابل مراجعه کنید: <a href='http://mohammadgholampour.pythonanywhere.com/'>پروژه وبلاگ </a>
   </p>
   
-  
-  
+  <br>
+  <br>
+  <br>
+
+<h2 align="center">نحوه استفاده از امکانات پروژه:</h2>
+
 <p dir="rtl">
-  جهت استفاده از سایت کاربر در ابتدا باید در سایت عضو شود
+  جهت استفاده از سایت کاربر در ابتدا باید در سایت عضو شود.
   </p>
     <img width='50%' style="display: block;margin-left: auto;margin-right: auto;" src='./images/1.png'>
 
