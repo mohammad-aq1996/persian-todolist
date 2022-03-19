@@ -1,4 +1,4 @@
 django==4.0.3
-django-bootstrap==21.2
+django-bootstrap3==21.2
 django-ckeditor==6.2.0
 django-jalali-date==1.0.1
