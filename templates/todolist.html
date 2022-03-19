@@ -9,7 +9,7 @@
         <div class="jumbotron">
         <h1 align="center"><b>لیست کار های شما</b></h1>
 
-            <h2 align="center"><b>لیست کارهای انجام{% if completed %}  شده: {% else %} نشده {% endif %} {{ count }}</b></h2>
+            <h2 align="center"><b>لیست کارهای انجام{% if completed %}  شده: {% else %} نشده: {% endif %} {{ count }}</b></h2>
         {% if todo_list %}
 
             {% for todo in todo_list %}
