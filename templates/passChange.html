@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="form-group">
+        <form method="post">
+            {% if form.errors  %}
+                <p>{{ form.errors }}</p>
+            {% endif %}
+            {% csrf_token %}
+            <label>رمز قبلی</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="old_password">
+            <label>رمز جدید</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="new_password1">
+            <label>تکرار رمز جدید</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="new_password2">
+            <br>
+            <input type="submit" class="btn btn-primary" value="تغییر رمز">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
