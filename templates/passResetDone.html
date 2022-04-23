@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    بازیابی گذرواژه
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2> پسورد شما با موفقیت تغییر کرد.</h2>
+    <p> برو به صفحه  <a href="{% url 'account_app:login' %}">ورود</a>  </p>
+</div>
+{% endblock %}

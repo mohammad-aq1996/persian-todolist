@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    بازیابی گذرواژه
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>جهت دریافت ایمیل بازیابی گذرواژه ایمیل خود را وارد کنید.</h2>
+        <div class="form-group">
+            {% if form.errors %}
+                <p>{{ form.errors }}</p>
+            {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="email" name="email" class="form-control" id="exampleFormControlInput1">
+            <input type="submit" class="btn btn-primary" value="ارسال">
+        </form>
+    </div>
+    </div>
+
+
+{% endblock %}

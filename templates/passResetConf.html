@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
 {% block title %}
-    تغییر گذرواژه
+    بازیابی گذرواژه
 {% endblock %}
 {% block content %}
 <div class="container">
     <div class="form-group">
-        <form method="post">
-            {% if form.errors  %}
-                <p style="color:red">اطلاعات وارد شده صحیح نمیباشد</p>
+        {% if form.errors  %}
+                <p style="color:red">رمزها یکسان نمیباشند</p>
             {% endif %}
+        <form method="post">
+
             {% csrf_token %}
-            <label>رمز قبلی</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="old_password">
             <label>رمز جدید</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="new_password1">
             <label>تکرار رمز جدید</label>
@@ -22,6 +21,4 @@
         </form>
     </div>
 </div>
-
-
 {% endblock %}
