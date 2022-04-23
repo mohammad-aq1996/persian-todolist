@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'todo_app.apps.TodoAppConfig',
     'bootstrap3',
     'ckeditor',
+    'account_app.apps.AccountAppConfig',
 
 ]
 
